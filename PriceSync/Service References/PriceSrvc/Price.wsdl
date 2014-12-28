@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DeletePrices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePricesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="InsertTree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertTreeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Diff" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertValueResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DeletePricesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePrices" />
+  </wsdl:message>
+  <wsdl:message name="DeletePricesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTree" />
+  </wsdl:message>
+  <wsdl:message name="InsertTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertValueSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertValue" />
+  </wsdl:message>
+  <wsdl:message name="InsertValueSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertValueResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PriceSoap">
+    <wsdl:operation name="DeletePrices">
+      <wsdl:input message="tns:DeletePricesSoapIn" />
+      <wsdl:output message="tns:DeletePricesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTree">
+      <wsdl:input message="tns:InsertTreeSoapIn" />
+      <wsdl:output message="tns:InsertTreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertValue">
+      <wsdl:input message="tns:InsertValueSoapIn" />
+      <wsdl:output message="tns:InsertValueSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PriceSoap" type="tns:PriceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DeletePrices">
+      <soap:operation soapAction="http://tempuri.org/DeletePrices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTree">
+      <soap:operation soapAction="http://tempuri.org/InsertTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertValue">
+      <soap:operation soapAction="http://tempuri.org/InsertValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PriceSoap12" type="tns:PriceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DeletePrices">
+      <soap12:operation soapAction="http://tempuri.org/DeletePrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTree">
+      <soap12:operation soapAction="http://tempuri.org/InsertTree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertValue">
+      <soap12:operation soapAction="http://tempuri.org/InsertValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Price">
+    <wsdl:port name="PriceSoap" binding="tns:PriceSoap">
+      <soap:address location="http://localhost/core/Price.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PriceSoap12" binding="tns:PriceSoap12">
+      <soap12:address location="http://localhost/core/Price.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
